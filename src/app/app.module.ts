@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 // NgRx
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { appReducers } from './app.recuder';
+import { appReducers } from './app.reducer';
 
 // Módulos
 import { AppRoutingModule } from './app-routing.module';

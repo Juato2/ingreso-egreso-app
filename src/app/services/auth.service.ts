@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+
 import { map } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.reducer';
+import * as authActions from '../auth/auth.actions';
+
 import { Usuario } from '../models/usuario.model';
 
 @Injectable({
@@ -10,15 +16,26 @@ import { Usuario } from '../models/usuario.model';
 export class AuthService {
   constructor(
     public auth: AngularFireAuth,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private store: Store<AppState>
   ) {}
 
   initAuthListener() {
     this.auth.authState.subscribe((fbUser) => {
-      console.log(fbUser);
-      console.log(fbUser?.uid);
-      console.log(fbUser?.email);
-      console.log(fbUser?.emailVerified);
+      // console.log(fbUser?.uid);
+      if(fbUser) {
+        // existe
+        this.firestore.doc(`${fbUser.uid}/usuario`).valueChanges()
+          .subscribe( firebaseUser => {
+            console.log(firebaseUser);
+            const userTemp = new Usuario('ABC', 'NOMBRE', 'EMAIL@GMAIL.COM');
+            this.store.dispatch(authActions.setUser({user: userTemp}));
+          })
+      } else {
+        // no existe
+        console.log('Llamar unset del user');
+      }
+
     });
   }
 

@@ -9,7 +9,7 @@ import { AppState } from 'src/app/app.reducer';
 import Swal from 'sweetalert2';
 
 import { AuthService } from 'src/app/services/auth.service';
-import  * as ui from '../../shared/ui.actions';
+import  * as ui from 'src/app/shared/ui.actions';
 
 @Component({
   selector: 'app-login',

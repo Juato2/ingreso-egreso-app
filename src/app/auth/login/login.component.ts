@@ -9,7 +9,7 @@ import { AppState } from 'src/app/app.reducer';
 import Swal from 'sweetalert2';
 
 import { AuthService } from 'src/app/services/auth.service';
-import  * as ui from 'src/app/shared/ui.actions';
+import * as ui from 'src/app/shared/ui.actions';
 
 @Component({
   selector: 'app-login',
@@ -33,9 +33,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: ['', Validators.required],
     });
 
-    this.uiSubscription = this.store.select('ui').subscribe( (ui) => {
-      this.cargando = ui.isLoading;
-      console.log('cargando subs');
+    this.uiSubscription = this.store.select('ui').subscribe( (userI) => {
+      this.cargando = userI.isLoading;
     });
   }
 
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.uiSubscription.unsubscribe();
   }
 
-  loginUsuario() {
+  loginUsuario(): void {
     if (this.loginForm.invalid) {
       return;
     }
@@ -71,8 +70,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           title: '¡Oops..!',
           text: error.message,
           // footer: '<a href>Why do I have this issue?</a>'
-        })
-      })
+        });
+      });
   }
 
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference, DocumentData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { IngresoEgreso } from '../models/ingreso-egreso.model';
 import { AuthService } from './auth.service';
 
@@ -16,13 +17,9 @@ export class IngresoEgresoService {
       .add({ ...ingresoEgreso });
   }
 
-  initIngresosEgresosListener(uid: string): void {
+  initIngresosEgresosListener(uid: string): Observable<any[]> {
 
-    this.firestore.collection(`${uid}/ingresos-egresos/items`)
-      .valueChanges({ idField: 'uid' })
-      .subscribe( algo => {
-        console.log(algo);
-      });
-
+    return this.firestore.collection(`${uid}/ingresos-egresos/items`)
+      .valueChanges({ idField: 'uid' });
   }
 }

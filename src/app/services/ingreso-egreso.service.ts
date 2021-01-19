@@ -22,4 +22,10 @@ export class IngresoEgresoService {
     return this.firestore.collection(`${uid}/ingresos-egresos/items`)
       .valueChanges({ idField: 'uid' });
   }
+
+  borrarIngresoEgreso(uidItem: string): Promise<void>{
+    return this.firestore.doc(`${this.authService.user.uid}/ingresos-egresos/items/${uidItem}`)
+      .delete();
+  }
+
 }

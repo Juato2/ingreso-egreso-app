@@ -12,6 +12,7 @@ export class IngresoEgresoService {
   constructor(private firestore: AngularFirestore, private authService: AuthService) { }
 
   crearIngresoEgreso(ingresoEgreso: IngresoEgreso): Promise<DocumentReference<DocumentData>> {
+    delete ingresoEgreso.uid;
     return this.firestore.doc(`${this.authService.user.uid}/ingresos-egresos`)
       .collection('items')
       .add({ ...ingresoEgreso });

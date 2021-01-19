@@ -27,6 +27,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { IngresoEgresoComponent } from './ingreso-egreso/ingreso-egreso.component';
+import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { IngresoEgresoComponent } from './ingreso-egreso/ingreso-egreso.componen
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrdenIngresoPipe
   ],
   imports: [
     BrowserModule,

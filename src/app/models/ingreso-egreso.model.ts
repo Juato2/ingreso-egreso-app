@@ -3,6 +3,6 @@ export class IngresoEgreso {
         public descipcion: string,
         public monto: number,
         public tipo: string,
-        // public uid?: string,
+        public uid?: string,
     ) { }
 }

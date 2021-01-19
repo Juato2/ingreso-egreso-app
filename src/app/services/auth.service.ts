@@ -12,6 +12,7 @@ import { AppState } from '../app.reducer';
 import * as authActions from '../auth/auth.actions';
 
 import { Usuario } from '../models/usuario.model';
+import * as ingresosEgresosActions from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +61,7 @@ export class AuthService {
         }
         this._user = null;
         this.store.dispatch(authActions.unSetUser());
+        this.store.dispatch(ingresosEgresosActions.unSetItems());
       }
 
     });

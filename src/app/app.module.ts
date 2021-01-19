@@ -23,14 +23,13 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetalleComponent } from './ingreso-egreso/detalle/detalle.component';
 import { EstadisticaComponent } from './ingreso-egreso/estadistica/estadistica.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
+
 import { IngresoEgresoComponent } from './ingreso-egreso/ingreso-egreso.component';
 import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
 
 // Módulos
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -39,15 +38,16 @@ import { AuthModule } from './auth/auth.module';
     IngresoEgresoComponent,
     EstadisticaComponent,
     DetalleComponent,
-    FooterComponent,
-    NavbarComponent,
-    SidebarComponent,
+
+
+    
     OrdenIngresoPipe
   ],
   imports: [
     BrowserModule,
 
     AuthModule,
+    SharedModule,
 
     AppRoutingModule,
     ReactiveFormsModule,
